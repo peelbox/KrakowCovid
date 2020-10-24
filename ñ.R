@@ -87,6 +87,78 @@ plot(datos$flipper_length_mm)
 plot(datos) #parece basura
 
 #Tarea 3: 
-#Con la función summary viste que había valores perdidos NA. Utiliza la función 
+#Con la función summary viste que había valores perdidos NA. Utiliza la función na.omit
+#y guárdala en un objeto nuevo que se llame datos2 
+datos2 <- na.omit(datos)
+datos <- datos2
+#La anterior acción no ocupa memoria
 
+#============= Power subset =========== 
+#Ahora sí lo siguiente es el motivo por el cual utilizo el universo tidyverse.
+library(tidyverse)
+#Hay muchas funciones, pero vamos a empezar con 5 verbos clave: filter, select, group_by, mutate y summarise
+#y un personaje: Al siguiente comando se le llama pipe %>% porque concatena una orden con otra.
+
+### Select
+?dplyr::select()
+names(datos) #no me acuerdo el nombre de las variables
+select(datos, bill_length_mm)
+#En la manera base sería 
+datos$bill_length_mm
+#O bien 
+datos[,"bill_length_mm"]
+
+#Ahora observa que con el pipe podemos hacer lo siguiente
+datos %>% select(bill_length_mm)
+
+### Filter
+?dplyr::filter()
+#Supongamos que solo queremos trabajar con los pinguinos de una isla
+levels(datos$island) #No me acuerdo de los niveles
+datos %>% filter(island == "Dream")
+datos %>% filter(bill_length_mm > 39) 
+
+
+
+### Group_by 
+?dplyr::group_by()
+
+#group_by funciona mejor acompañada de summarise o mutate
+datos %>% group_by(island) #observa que no pasa nada aparentemente aunque los datos ya están agrupados
+
+#summarise
+?dplyr::summarise()
+#Sirve para hacer resumenes
+datos %>% select(bill_length_mm) %>% summarise(media = mean(bill_length_mm))
+#Pero es más poderoso cuando lo juntamos con groupby
+datos %>% group_by(island) %>% summarise(media = mean(bill_length_mm))
+
+##arrange
+#la misma linea pero poniéndolos de menor a mayor
+datos %>% 
+        group_by(island) %>% 
+        summarise(media = mean(bill_length_mm)) %>% 
+        arrange(media)
+
+### mutate
+?dplyr::mutate()
+#Sirve para crear variables nuevas
+datos %>% mutate(varnueva = "ññññ")
+datos %>% mutate(varn = bill_length_mm + flipper_length_mm)
+
+#TAREA:  
+#¿Cuál es la mediana -median()- de la longitud de las aletas de los pinguinos 
+#en función de la especie?  y ¿en función del sexo? 
+#Tu turno:
+
+
+
+#TAREA: 
+#Crea una nueva variable que sea la diferencia entre bill_length_mm  y bill_depth_mm
+
+#TAREA
+datos %>% filter(island != "Dream") #Qué islas estoy seleccionando?
+
+#TAREA
+# Selecciona a los pinguinos de las especie Adelie que tengan una masa corporal menor que 3600
 
