@@ -68,6 +68,12 @@ datos <- penguins
 #debe utilizar si los datos son muchos pero esta vez es para que veas como funciona.
 
 # Tu turno: 
+summary(datos) #info de estadisticas por cada columna
+
+str(datos)
+head(datos) #Muestra los primeros 6 filas
+tail(datos) #Muestra las ultimas 6 filas
+View(datos) #Abre una ventana de dataset . muy bueno!!
 
 
 #Tarea 1: 
@@ -78,7 +84,7 @@ plot(datos$flipper_length_mm)
 #variable es continua o discreta
 #¿Qué pasa si haces plot(datos)? Tu turno:
 
-
+plot(datos) #parece basura
 
 #Tarea 3: 
 #Con la función summary viste que había valores perdidos NA. Utiliza la función 
