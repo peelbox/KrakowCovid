@@ -18,7 +18,7 @@ datos <- read.csv("pinguinos.csv", header = T)
 #base son muy útiles y rápidos, para presentar reportes se suele utilizar ggplot. 
 
 #cambio el nombre a las variables para poder escribirlas más rápido
-names(datos) <- c("especie", "isla", "lon_pico", "anch_pico", "aleta", "masa", "sexo")
+names(datos) <- c("especie", "isla", "lon_pico", "anch_pico", "aleta", "masa", "año","sexo")
 head(datos)
 datos <- na.omit(datos)
 
@@ -90,6 +90,7 @@ p2 +
 p2 + facet_grid(~sexo) #el símbolo "~" se lee: "en función de" 
 
 
+#datos <- datos[ , 1:7]
 #Lo bueno de todo esto es que podemos combinarlo con los verbos de la sesión 1. Por ejemplo,
 #queremos saber la relación entre la longitud de las aletas en función de la masa pero sólo 
 #para las hembras de la isla "Dream" por especies:
