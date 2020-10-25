@@ -24,6 +24,7 @@ datos <- na.omit(datos)
 
 ggplot(datos) #dibuja un lienzo en blanco
 
+
 #en la estética -aestethics- le indicamos las variables a dibujar 
 ggplot(datos, aes(x = lon_pico, y = aleta)) #vemos que dibuja sobre el lienzo las escalas 
 
