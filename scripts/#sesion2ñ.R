@@ -18,7 +18,7 @@ datos <- read.csv("pinguinos.csv", header = T)
 #base son muy útiles y rápidos, para presentar reportes se suele utilizar ggplot. 
 
 #cambio el nombre a las variables para poder escribirlas más rápido
-names(datos) <- c("especie", "isla", "lon_pico", "anch_pico", "aleta", "masa", "año","sexo")
+names(datos) <- c("especie", "isla", "lon_pico", "anch_pico", "aleta", "masa", "sexo","año")
 head(datos)
 datos <- na.omit(datos)
 
