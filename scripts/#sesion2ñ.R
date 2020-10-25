@@ -5,10 +5,10 @@ library(ggplot2)
 library(dplyr)
 datos <- palmerpenguins::penguins
 ###breve paréntesis -cómo escribir y leer csv ======== 
-?write.csv()
-write.csv(datos, file = "pinguinos.csv")
-?read.csv()
-datos <- read.csv("pinguinos.csv", header = T)
+# ?write.csv()
+# write.csv(datos, file = "pinguinos.csv")
+# ?read.csv()
+# datos <- read.csv("pinguinos.csv", header = T)
 #Como podemos imagirnarnos se puede leer cualquier tipo de archivo. 
 #Esta página de Cheatsheets es interesante: https://rstudio.com/resources/cheatsheets/
 #===  fin del paréntesis ============== 
@@ -18,6 +18,7 @@ datos <- read.csv("pinguinos.csv", header = T)
 #base son muy útiles y rápidos, para presentar reportes se suele utilizar ggplot. 
 
 #cambio el nombre a las variables para poder escribirlas más rápido
+head(datos)
 names(datos) <- c("especie", "isla", "lon_pico", "anch_pico", "aleta", "masa", "sexo","año")
 head(datos)
 datos <- na.omit(datos)
