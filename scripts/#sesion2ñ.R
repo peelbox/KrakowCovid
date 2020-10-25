@@ -5,10 +5,10 @@ library(ggplot2)
 library(dplyr)
 datos <- palmerpenguins::penguins
 ###breve paréntesis -cómo escribir y leer csv ======== 
-# ?write.csv()
-# write.csv(datos, file = "pinguinos.csv")
-# ?read.csv()
-# datos <- read.csv("pinguinos.csv", header = T)
+?write.csv()
+write.csv(datos, file = "pinguinos.csv")
+?read.csv()
+datos <- read.csv("pinguinos.csv", header = T)
 #Como podemos imagirnarnos se puede leer cualquier tipo de archivo. 
 #Esta página de Cheatsheets es interesante: https://rstudio.com/resources/cheatsheets/
 #===  fin del paréntesis ============== 
@@ -18,13 +18,12 @@ datos <- palmerpenguins::penguins
 #base son muy útiles y rápidos, para presentar reportes se suele utilizar ggplot. 
 
 #cambio el nombre a las variables para poder escribirlas más rápido
-head(datos)
-length(names(datos))
-names(datos) <- c("especie", "isla", "lon_pico", "anch_pico", "aleta", "masa", "sexo")
+names(datos) <- c("especie", "isla", "lon_pico", "anch_pico", "aleta", "masa", "sexo","año")
 head(datos)
 datos <- na.omit(datos)
 
 ggplot(datos) #dibuja un lienzo en blanco
+
 
 #en la estética -aestethics- le indicamos las variables a dibujar 
 ggplot(datos, aes(x = lon_pico, y = aleta)) #vemos que dibuja sobre el lienzo las escalas 
@@ -106,16 +105,6 @@ p3
 p3 + geom_smooth(method = "lm")
 
 
-#=========== los simpsons ========== 
-library(ggsci)
-p + scale_colour_simpsons()
-p + scale_color_futurama()
-p2 + scale_fill_startrek()
-p2 + scale_fill_rickandmorty()
-
-library(ggthemes)
-p + theme_economist()
-p2 + theme_wsj() #wall street journal
 #TAREA: Calcula la medía de la masa en función de la especie y el sexo y haz una gráfica con el resultado. 
 
 #TAREA: Haz un boxplot de la longitud del pico en función de la especie para conocer su distribución y 
