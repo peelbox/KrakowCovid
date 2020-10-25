@@ -104,6 +104,7 @@ p3
 #a lo anterior puedo calcularle la recta de regresión por mínimos cuadrados o por otro método:
 p3 + geom_smooth(method = "lm")
 
+#install.packages("ggsci")
 library(ggsci)
 p + scale_colour_simpsons()
 p + scale_color_futurama()
@@ -116,9 +117,25 @@ p2 + theme_wsj() #wall street journal
 
 #TAREA: Calcula la medía de la masa en función de la especie y el sexo y haz una gráfica con el resultado. 
 
+temp <- datos %>% group_by(especie,sexo) %>% summarise(media = mean(masa)) 
+
+ggplot(temp,aes(especie, media, colour = sexo)) +
+        geom_point()
+
+
 #TAREA: Haz un boxplot de la longitud del pico en función de la especie para conocer su distribución y 
 #cambia las etiquetas tales como título, eje x, eje y, caption etc
+
+head(datos)
+ggplot(datos,aes(especie, lon_pico, color = isla)) +geom_point(alpha = 0.2) +
+        labs(x = "especie del pico", y = "lon_pico", title = "Distribucion")  
 
 
 #TAREA: Dibuja la densidad de la anchura del pico (geom_density) en función de la especie (fill = especie) 
 #cambiando la opacidad y otros elementos gráficos
+head(datos)
+
+ggplot(datos, aes(especie, anch_pico, fill = especie)) +
+        geom_density(stat = "density", 
+                 alpha = 0.1 #opacidad
+        ) 
