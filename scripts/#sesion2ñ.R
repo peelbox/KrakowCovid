@@ -104,7 +104,6 @@ p3
 #a lo anterior puedo calcularle la recta de regresión por mínimos cuadrados o por otro método:
 p3 + geom_smooth(method = "lm")
 
-
 #TAREA: Calcula la medía de la masa en función de la especie y el sexo y haz una gráfica con el resultado. 
 
 #TAREA: Haz un boxplot de la longitud del pico en función de la especie para conocer su distribución y 
