@@ -96,7 +96,7 @@ datos <- datos2
 #============= Power subset =========== 
 #Ahora sí lo siguiente es el motivo por el cual utilizo el universo tidyverse.
 #install.packages(tidyverse)
-library(tidyverse)
+library(dplyr)
 #Hay muchas funciones, pero vamos a empezar con 5 verbos clave: filter, select, group_by, mutate y summarise
 #y un personaje: Al siguiente comando se le llama pipe %>% porque concatena una orden con otra.
 
@@ -119,8 +119,6 @@ levels(datos$island) #No me acuerdo de los niveles
 datos %>% filter(island == "Dream")
 datos %>% filter(bill_length_mm > 39) 
 
-
-
 ### Group_by 
 ?dplyr::group_by()
 
@@ -130,15 +128,15 @@ datos %>% group_by(island) #observa que no pasa nada aparentemente aunque los da
 #summarise
 ?dplyr::summarise()
 #Sirve para hacer resumenes
-datos %>% select(bill_length_mm) %>% summarise(media = mean(bill_length_mm))
+datos %>% select(bill_length_mm) %>% summarise(media = mean(bill_length_mm, na.rm = T))
 #Pero es más poderoso cuando lo juntamos con groupby
-datos %>% group_by(island) %>% summarise(media = mean(bill_length_mm))
+datos %>% group_by(island) %>% summarise(media = mean(bill_length_mm, na.rm = T))
 
 ##arrange
 #la misma linea pero poniéndolos de menor a mayor
 datos %>% 
         group_by(island) %>% 
-        summarise(media = mean(bill_length_mm)) %>% 
+        summarise(media = mean(bill_length_mm, na.rm = T)) %>% 
         arrange(media)
 
 ### mutate
@@ -159,13 +157,18 @@ names(datos)
 levels(datos$species)
 #la media de aletas
 datos %>% select(flipper_length_mm) %>% summarise(media = mean(flipper_length_mm))
-mean(datos$flipper_length_mm,na.rm = TRUE)
+mean(datos$flipper_length_mm, na.rm = TRUE)
 
-#la media en funcion del especie
+#la media en funcion del especie 
 datos %>% group_by(species) %>% summarise(media = mean(bill_length_mm))
+#CORRECCIÓN: se pedía la mediana. 
+#Solución:
+datos %>% group_by(species) %>% summarise(mediana = median(bill_length_mm))
 
 #la media en funcion del sexo
 datos %>% group_by(sex) %>% summarise(media = mean(bill_length_mm))
+
+datos %>% group_by(sex) %>% summarise(mediana = median(bill_length_mm)) #Mediana
 
 #TAREA: 
 #Crea una nueva variable que sea la diferencia entre bill_length_mm  y bill_depth_mm
@@ -178,3 +181,4 @@ levels(datos$island)
 #TAREA
 # Selecciona a los pinguinos de las especie Adelie que tengan una masa corporal menor que 3600
 datos %>% filter(body_mass_g < 3600 ) 
+
