@@ -118,7 +118,6 @@ p + theme_economist()
 p2 + theme_wsj() #wall street journal
 #TAREA: Calcula la medía de la masa en función de la especie y el sexo y haz una gráfica con el resultado. 
 
-
 #TAREA: Haz un boxplot de la longitud del pico en función de la especie para conocer su distribución y 
 #cambia las etiquetas tales como título, eje x, eje y, caption etc
 
