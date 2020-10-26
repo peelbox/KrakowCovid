@@ -31,7 +31,7 @@ names(df) <- c("id", "distrito", "ogolem", "activos_10mil", "fallecidos", "curad
 #===========================================
 
 #Le ponemos la fecha de hoy
-df <- df %>% dplyr::mutate(fecha = Sys.Date()) %>% dplyr::select(fecha, everything())
+df <- df %>% dplyr::mutate(fecha = Sys.Date()) %>% dplyr::select(fecha, dplyr::everything())
 
 #=========== limpiador ========== 
 #Dejamos el df de la misma manera que datos para poder unirlos
