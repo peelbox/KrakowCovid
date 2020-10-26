@@ -11,8 +11,10 @@ if (!("tabulizer" %in% installed.packages())) {
 if (!("lubridate" %in% installed.packages())) {
   install.packages("lubridate")
 }
+`%>%` <- dplyr::`%>%` #definición del pipe 
 
-sitio <- "https://wsse.krakow.pl/page/wp-content/uploads/2020/10/COVID-19-ogniska-stan-na-23.10.2020-MPWIS.pdf"
+fecha <- Sys.Date() %>% format("%d.%m.%Y") #Fecha de hoy en el formato de la url
+sitio <- paste0("https://wsse.krakow.pl/page/wp-content/uploads/2020/10/COVID-19-ogniska-stan-na-", fecha,"-MPWIS.pdf")
 df <- tabulizer::extract_tables(sitio, encoding = "UTF-8")
 df <- as.data.frame(df)[4:25, ] 
 df
@@ -44,6 +46,8 @@ df[,c(4, 6:length(df))] <- sapply(df[,c(4, 6:length(df))], function(x) {
 }) 
 df$fecha <- lubridate::as_date(df$fecha)
 df$id <- as.integer(df$id)
+#Ponemos en mayúsculas la primera letra del distrito
+df$distrito <- str_to_title(df$distrito)
 #================================
 
 #============= Unión ============ 
