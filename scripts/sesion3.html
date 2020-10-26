@@ -369,8 +369,11 @@ summary {
 </div>
 
 
-<p>## Sesión 3 Intro a RMarkdown Markdown es mucho más poderoso que jupyter, esto es evidente. Tiene la capacidad de renderizar en html, pdf a través de LáTex, incluir <code>chunks</code> en diversos lenguajes etc., Además es posible utilizar CSS para darle formato al documento y por supuesto JS, una maravilla. Así que vamos a continuar esta clase desde RMarkdown.</p>
-<p>### Funciones y loops</p>
+<div id="sesión-3-intro-a-rmarkdown" class="section level2">
+<h2>Sesión 3 Intro a RMarkdown</h2>
+<p>Markdown es mucho más poderoso que jupyter, esto es evidente. Tiene la capacidad de renderizar en html, pdf a través de LáTex, incluir <code>chunks</code> en diversos lenguajes etc., Además es posible utilizar CSS para darle formato al documento y por supuesto JS, una maravilla. Así que vamos a continuar esta clase desde RMarkdown.</p>
+<div id="funciones-y-loops" class="section level3">
+<h3>Funciones y loops</h3>
 <p>Las funciones son importantes en cualquier lenguaje de programación dado que nos permiten ahorrar tiempo y automatizar tareas.</p>
 <p>Vamos a insertar código a continuación con la pestaña de insert o bien con el shortcut control + alt + i</p>
 <pre class="r"><code>mifuncion &lt;- function() {
@@ -379,6 +382,9 @@ summary {
 mifuncion()</code></pre>
 <pre><code>## [1] &quot;Hola Mundo&quot;</code></pre>
 <p>Cómo ves el comando básico es la función <code>function()</code> que en el caso anterior es una función anónima. Los argumentos podemos declararlos dentro de los paréntesis.</p>
+<pre class="r"><code>mifuncion &lt;- function(x) {
+        x + 1
+}</code></pre>
 <p>Cuando declaramos una variable dentro de la función esta no está disponible en el entorno global, sólo dentro de la función.</p>
 <pre class="r"><code>mifuncion &lt;- function(x) {
         var1 &lt;- x + 1 
@@ -432,6 +438,8 @@ sap</code></pre>
 <pre class="r"><code>class(sap)</code></pre>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
 <p>&lt;–! TODO Terminar sesión 3 –&gt;</p>
+</div>
+</div>
 
 
 

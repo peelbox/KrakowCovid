@@ -4,10 +4,10 @@ author: "Kifirifis"
 date: "26/10/2020"
 output: html_document
 ---
- ## Sesión 3 Intro a RMarkdown 
+## Sesión 3 Intro a RMarkdown 
  Markdown es mucho más poderoso que jupyter, esto es evidente. Tiene la capacidad de renderizar en html, pdf a través de LáTex, incluir `chunks` en diversos lenguajes etc., Además es posible utilizar CSS para darle formato al documento y por supuesto JS, una maravilla. Así que vamos a continuar esta clase desde RMarkdown. 
  
- ### Funciones y loops 
+### Funciones y loops 
  
  Las funciones son importantes en cualquier lenguaje de programación dado que nos permiten ahorrar tiempo y automatizar tareas. 
  
@@ -22,6 +22,9 @@ mifuncion()
 Cómo ves el comando básico es la función `function()` que en el caso anterior es una función anónima. Los argumentos podemos declararlos dentro de los paréntesis.
 
 ```{r}
+mifuncion <- function(x) {
+        x + 1
+}
 ```
 Cuando declaramos una variable dentro de la función esta no está disponible en el entorno global, sólo dentro de la función. 
 
@@ -88,6 +91,5 @@ sap
 class(sap)
 ```
 <--! TODO Terminar sesión 3 -->
-
 
 
