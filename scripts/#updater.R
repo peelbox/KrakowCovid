@@ -21,16 +21,17 @@ names(df) <- c("id", "distrito", "ogolem", "activos_10mil", "fallecidos", "curad
                "activos", "cuarentena_ext", "cuarentena_contacto", "enfermo_tras_hospital",
                "enfermo_dps", "enfermo_zol", "trabajo", "escuelas", "colegios",
                "dormitorios", "bodas", "hosteleria", "transporte", "otros")
-#Le ponemos la fecha de hoy
-df <- df %>% dplyr::mutate(fecha = Sys.Date()) %>% dplyr::select(fecha, everything())
 
 #=========== Correr sólo los lunes ========= 
 #Agrega valores perdidos a los datos de sábado y domingo -agrega filas-.
-# m3 <- c(Sys.Date() - 3); names(m3) <- "fecha"
 # m2 <- c(Sys.Date() - 2); names(m2) <- "fecha"
-# a <- bind_rows(m3, m2); a$date <- lubridate::as_date(a$fecha)
+# m1 <- c(Sys.Date() - 1); names(m1) <- "fecha"
+# a <- bind_rows(m2, m1); a$fecha <- lubridate::as_date(a$fecha)
 # df <- dplyr::full_join(df, a)
 #===========================================
+
+#Le ponemos la fecha de hoy
+df <- df %>% dplyr::mutate(fecha = Sys.Date()) %>% dplyr::select(fecha, everything())
 
 #=========== limpiador ========== 
 #Dejamos el df de la misma manera que datos para poder unirlos
