@@ -38,7 +38,6 @@ ggplot2::ggplot(ggplot2::aes(fecha, activos, label = activos)) +
              caption = "Author: @JKniffki | KStats®",
              x = "", y = "Active Cases") +
         ggthemes::theme_economist() -> p1
-p1
 #Guardar en /plots
 ggplot2::ggsave(paste0("plots/active", fecha, ".png"), p1)
 
