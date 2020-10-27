@@ -11,6 +11,9 @@ if (!("ggplot2" %in% installed.packages())) {
 if (!("ggrepel" %in% installed.packages())) {
         install.packages("ggrepl")
 }
+if (!("ggthemes" %in% installed.packages())) {
+        install.packages("ggthemes")
+}
 
 datos <- read.csv("data/krakow.csv") 
 datos$fecha <- lubridate::as_date(datos$fecha)
@@ -18,23 +21,24 @@ datos$fecha <- lubridate::as_date(datos$fecha)
 fecha <- Sys.Date()
 
 #============= Active cases today ================
-datos %>% dplyr::filter(distrito == "M.kraków") %>% #Filtro
+datos %>% dplyr::filter(distrito == "M.kraków") %>% #filtro
         
         #============= Gráfico ========= 
-ggplot2::ggplot(ggplot2::aes(fecha, activos)) +
+ggplot2::ggplot(ggplot2::aes(fecha, activos, label = activos)) +
         ggplot2::geom_line() +
         ggplot2::geom_point() +
-        ggrepel::geom_text_repel(ggplot2::aes(label = as.character(activos))) + 
+        ggrepel::geom_label_repel() + 
         
         #escalas
         ggplot2::scale_x_date(date_breaks = "2 day", date_labels = "%b %d") + 
         
         # Etiquetas
-        ggplot2::labs(title = "Active Cases in M. Kraków",
+        ggplot2::labs(title = "Active cases in M. Kraków",
              subtitle = paste("Update:", fecha, "| Data source: https://wsse.krakow.pl"),
              caption = "Author: @JKniffki | KStats®",
-             x = "", y = "Active Cases") -> p1
-
+             x = "", y = "Active Cases") +
+        ggthemes::theme_economist() -> p1
+p1
 #Guardar en /plots
 ggplot2::ggsave(paste0("plots/active", fecha, ".png"), p1)
 
