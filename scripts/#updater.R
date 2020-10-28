@@ -21,10 +21,10 @@ sitio <- paste0("https://wsse.krakow.pl/page/wp-content/uploads/2020/10/COVID-19
 df <- tabulizer::extract_tables(sitio, encoding = "UTF-8")
 df <- as.data.frame(df)[4:25, ] 
 #Ponemos los nombres en español
-names(df) <- c("id", "distrito", "ogolem", "activos_10mil", "fallecidos", "curados",
-               "activos", "cuarentena_ext", "cuarentena_contacto", "enfermo_tras_hospital",
-               "enfermo_dps", "enfermo_zol", "trabajo", "escuelas", "colegios",
-               "dormitorios", "bodas", "hosteleria", "transporte", "otros")
+names(df) <- c("id", "County", "Overall", "Incidence_vs_Active", "Deaths", "Recovered",
+               "Active", "Quarantine_inbound", "Quarantine_contact", "Contracted-health-services",
+               "Acvtive_DPS", "Acvtive_ZOL", "Work", "Academy", "School",
+               "Dormitories", "Weddings", "Hotels", "Public_Transport", "Others")
 
 #=========== Correr sólo los lunes ========= 
 #Agrega valores perdidos a los datos de sábado y domingo -agrega filas-.

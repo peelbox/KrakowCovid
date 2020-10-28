@@ -1,4 +1,7 @@
-"fecha","id","distrito","ogolem","activos_10mil","fallecidos","curados","activos","cuarentena_ext","cuarentena_contacto","enfermo_tras_hospital","enfermo_dps","enfermo_zol","trabajo","escuelas","colegios","dormitorios","bodas","hosteleria","transporte","otros"
+"Date","id","County","Overall","Incidence_vs_Active","Deaths","Recovered",
+               "Active","Quarantine_inbound","Quarantine_contact","Contracted-health-services",
+               "Acvtive_DPS","Acvtive_ZOL","Work","Academy","School",
+               "Dormitories","Weddings","Hotels","Public_Transport","Others"
 2020-10-06,1,"Bochenski",518,"48,48",30,421,59,3,134,20,240,0,12,23,0,0,31,0,0,55
 2020-10-06,2,"Brzeski",189,"20,28",2,156,29,3,35,58,12,2,2,0,0,0,0,21,0,56
 2020-10-06,3,"Chrzanowski",202,"16,22",4,100,98,1,40,16,23,2,16,0,0,0,8,0,0,96
