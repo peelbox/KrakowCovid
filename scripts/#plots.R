@@ -16,15 +16,15 @@ if (!("ggthemes" %in% installed.packages())) {
 }
 
 datos <- read.csv("data/krakow.csv") 
-datos$fecha <- lubridate::as_date(datos$fecha)
+datos$Date <- lubridate::as_date(datos$Date)
 `%>%` <- dplyr::`%>%` #definición del pipe 
 fecha <- Sys.Date()
 
 #============= Active cases today ================
-datos %>% dplyr::filter(distrito == "M.kraków") %>% #filtro
+datos %>% dplyr::filter(County == "M.kraków") %>% #filtro
         
         #============= Gráfico ========= 
-ggplot2::ggplot(ggplot2::aes(fecha, activos, label = activos)) +
+ggplot2::ggplot(ggplot2::aes(Date, Active, label = Active)) +
         ggplot2::geom_line() +
         ggplot2::geom_point() +
         ggrepel::geom_label_repel() + 

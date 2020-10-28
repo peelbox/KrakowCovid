@@ -35,7 +35,7 @@ names(df) <- c("id", "County", "Overall", "Incidence_vs_Active", "Deaths", "Reco
 #===========================================
 
 #Le ponemos la fecha de hoy
-df <- df %>% dplyr::mutate(fecha = Sys.Date()) %>% dplyr::select(fecha, dplyr::everything())
+df <- df %>% dplyr::mutate(Date = Sys.Date()) %>% dplyr::select(Date, dplyr::everything())
 
 #=========== limpiador ========== 
 #Dejamos el df de la misma manera que datos para poder unirlos
@@ -46,16 +46,16 @@ df <- sapply(df, function(x) {
 df[,c(4, 6:length(df))] <- sapply(df[,c(4, 6:length(df))], function(x) {
   as.numeric(x)
 }) 
-df$fecha <- lubridate::as_date(df$fecha)
+df$Date <- lubridate::as_date(df$Date)
 df$id <- as.integer(df$id)
 #Ponemos en mayúsculas la primera letra del distrito
-df$distrito <-  stringr::str_to_title(df$distrito)
+df$County <-  stringr::str_to_title(df$County)
 #================================
 
 #============= Unión ============ 
 #Agrega los nuevos datos al csv definitivo que se llama krakow.csv
 datos <- read.csv("data/krakow.csv", header = T)
-datos$fecha <- lubridate::as_date(datos$fecha)
+datos$Date <- lubridate::as_date(datos$Date)
 
 datos <- dplyr::full_join(datos, df)
 #======================================
