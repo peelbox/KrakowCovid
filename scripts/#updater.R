@@ -60,4 +60,4 @@ datos$Date <- lubridate::as_date(datos$Date)
 datos <- dplyr::full_join(datos, df)
 #======================================
 # Escribe csv 
-# write.csv(datos, "data/krakow.csv", row.names = F)
+# write.csv(datos, "data/krakow.csv", row.names = F, fileEncoding = "UTF-8")
