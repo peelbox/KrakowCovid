@@ -15,7 +15,7 @@ if (!("ggthemes" %in% installed.packages())) {
         install.packages("ggthemes")
 }
 
-datos <- read.csv("data/krakow.csv") 
+datos <- read.csv("data/krakow.csv", header = T) 
 datos$Date <- lubridate::as_date(datos$Date)
 `%>%` <- dplyr::`%>%` #definición del pipe 
 fecha <- Sys.Date()
