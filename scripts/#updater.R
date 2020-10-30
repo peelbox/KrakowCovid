@@ -54,9 +54,8 @@ df$County <-  stringr::str_to_title(df$County)
 
 #============= Unión ============ 
 #Agrega los nuevos datos al csv definitivo que se llama krakow.csv
-datos <- read.csv("data/krakow.csv", encoding = "UTF-8")
+datos <- read.csv("data/krakow.csv")
 datos$Date <- lubridate::as_date(datos$Date)
-datos$County <- gsub("�", "ó", datos$County)
 
 datos <- dplyr::full_join(datos, df)
 #======================================
