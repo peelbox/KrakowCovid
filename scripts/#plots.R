@@ -41,3 +41,51 @@ ggplot2::ggplot(ggplot2::aes(Date, Active, label = Active)) +
 #Guardar en /plots
 ggplot2::ggsave(paste0("plots/active", fecha, ".png"), p1)
 
+#==============================================
+#=========== Plot con indicadores ============= 
+#==============================================
+datos <- read.csv("data/MKrakow.csv", header = T) 
+datos$Date <- as.Date(datos$Date)
+
+#=========== 7 Días ============= 
+datos %>% ggplot2::ggplot(ggplot2::aes(Date, Siete, label = round(Siete, 2))) +
+        ggplot2::geom_point() +
+        ggplot2::geom_line() +
+        ggrepel::geom_label_repel() +
+        ggplot2::labs(title = "Number of new Covid-19 cases per 100,000 persons within the last 7 days in M. Krakow",
+             subtitle = paste("Update:", fecha, "| Data source: https://wsse.krakow.pl"),
+             caption = "Author: @JKniffki | KStats®",
+             x = "", y = "Active Cases") +
+        ggthemes::theme_economist() -> p2
+
+#Guardar en /plots
+ggplot2::ggsave(paste0("plots/daysSeven", fecha, ".png"), p2)
+
+
+#=========== tasa 100 mil ============= 
+datos %>% ggplot2::ggplot(ggplot2::aes(Date, Cienmil, label = round(Cienmil, 2))) +
+        ggplot2::geom_point() +
+        ggplot2::geom_line() +
+        ggrepel::geom_label_repel() +
+        ggplot2::labs(title = "Rate of new Covid-19 cases per 100,000 persons in M. Krakow",
+             subtitle = paste("Update:", fecha, "| Data source: https://wsse.krakow.pl"),
+             caption = "Author: @JKniffki | KStats®",
+             x = "", y = "Active Cases") +
+        ggthemes::theme_economist() -> p3
+
+#Guardar en /plots
+ggplot2::ggsave(paste0("plots/rate", fecha, ".png"), p3)
+
+#=============== MA3 de tasa de nuevos casos cada 100mil ======== 
+datos %>% dplyr::mutate(MA3new = zoo::rollmean(Cienmil, k = 3, fill = NA, align = "right")) %>% 
+        ggplot2::ggplot(ggplot2::aes(Date, MA3new, label = round(MA3new, 2))) +
+        ggplot2::geom_point() +
+        ggplot2::geom_line() +
+        ggrepel::geom_label_repel() +
+        ggplot2::labs(title = "Rate of new Covid-19 cases per 100,000 persons Moving Average 3 days in M. Krakow",
+                      subtitle = paste("Update:", fecha, "| Data source: https://wsse.krakow.pl"),
+                      caption = "Author: @JKniffki | KStats®",
+                      x = "", y = "Active Cases") +
+        ggthemes::theme_economist() -> p4
+#Guardar en /plots
+ggplot2::ggsave(paste0("plots/rateMa3", fecha, ".png"), p4)
