@@ -15,7 +15,7 @@ if (!("zoo" %in% installed.packages())) {
 datos <- read.csv("data/krakow.csv")
 datos$Date <- as.Date(datos$Date)
 
-habitantes <- 709400 #Los datos poblacionales se tomaron de esta página
+habitantes <- 779115 #Los datos poblacionales se tomaron de esta página wsse censo del 31.12.2019 
 
 kdf <- datos %>% dplyr::filter(County == "M.kraków") %>% dplyr::select(Date, Overall, Deaths, Recovered, Active)
 kdf %>% dplyr::mutate(
