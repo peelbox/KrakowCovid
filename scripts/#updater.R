@@ -16,8 +16,9 @@ if (!("stringr" %in% installed.packages())) {
 }
 `%>%` <- dplyr::`%>%` #definición del pipe 
 
-fecha <- Sys.Date() %>% format("%d.%m.%Y") #Fecha de hoy en el formato de la url
-sitio <- paste0("https://wsse.krakow.pl/page/wp-content/uploads/2020/10/COVID-19-ogniska-stan-na-", fecha,"-MPWIS.pdf")
+fecha <- Sys.Date() %>% format("%d%m%Y") #Fecha de hoy en el formato de la url
+# sitio <- paste0("https://wsse.krakow.pl/page/wp-content/uploads/2020/10/COVID-19-ogniska-stan-na-", fecha,"-MPWIS.pdf")
+sitio <- paste0("pdf/", fecha, "krakow.pdf")
 df <- tabulizer::extract_tables(sitio, encoding = "UTF-8")
 df <- as.data.frame(df)[4:25, ] 
 #Ponemos los nombres en español
