@@ -39,7 +39,7 @@ ggplot2::ggplot(ggplot2::aes(Date, Active, label = Active)) +
              x = "", y = "Active Cases") +
         ggthemes::theme_economist() -> p1
 #Guardar en /plots
-ggplot2::ggsave(paste0("plots/active", fecha, ".png"), p1)
+ggplot2::ggsave("plots/active.png", p1)
 
 #==============================================
 #=========== Plot con indicadores ============= 
@@ -57,9 +57,9 @@ datos %>% ggplot2::ggplot(ggplot2::aes(Date, Siete, label = round(Siete, 2))) +
              caption = "Author: @JKniffki | KStats®",
              x = "", y = "Active Cases") +
         ggthemes::theme_economist() -> p2
-
+p2
 #Guardar en /plots
-ggplot2::ggsave(paste0("plots/daysSeven", fecha, ".png"), p2)
+ggplot2::ggsave("plots/daysSeven.png", p2)
 
 
 #=========== tasa 100 mil ============= 
@@ -72,9 +72,9 @@ datos %>% ggplot2::ggplot(ggplot2::aes(Date, Cienmil, label = round(Cienmil, 2))
              caption = "Author: @JKniffki | KStats®",
              x = "", y = "Active Cases") +
         ggthemes::theme_economist() -> p3
-
+p3
 #Guardar en /plots
-ggplot2::ggsave(paste0("plots/rate", fecha, ".png"), p3)
+ggplot2::ggsave("plots/rate.png", p3)
 
 #=============== MA3 de tasa de nuevos casos cada 100mil ======== 
 datos %>% dplyr::mutate(MA3new = zoo::rollmean(Cienmil, k = 3, fill = NA, align = "right")) %>% 
@@ -87,5 +87,6 @@ datos %>% dplyr::mutate(MA3new = zoo::rollmean(Cienmil, k = 3, fill = NA, align 
                       caption = "Author: @JKniffki | KStats®",
                       x = "", y = "Active Cases") +
         ggthemes::theme_economist() -> p4
+p4
 #Guardar en /plots
-ggplot2::ggsave(paste0("plots/rateMa3", fecha, ".png"), p4)
+ggplot2::ggsave(paste0("plots/rateMa3.png"), p4)
