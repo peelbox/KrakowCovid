@@ -57,7 +57,7 @@ datos %>% ggplot2::ggplot(ggplot2::aes(Date, Siete, label = round(Siete, 2))) +
              caption = "Author: @JKniffki | KStats®",
              x = "", y = "Active Cases") +
         ggthemes::theme_economist() -> p2
-
+p2
 #Guardar en /plots
 ggplot2::ggsave(paste0("plots/daysSeven", fecha, ".png"), p2)
 
@@ -72,7 +72,7 @@ datos %>% ggplot2::ggplot(ggplot2::aes(Date, Cienmil, label = round(Cienmil, 2))
              caption = "Author: @JKniffki | KStats®",
              x = "", y = "Active Cases") +
         ggthemes::theme_economist() -> p3
-
+p3
 #Guardar en /plots
 ggplot2::ggsave(paste0("plots/rate", fecha, ".png"), p3)
 
@@ -87,5 +87,6 @@ datos %>% dplyr::mutate(MA3new = zoo::rollmean(Cienmil, k = 3, fill = NA, align 
                       caption = "Author: @JKniffki | KStats®",
                       x = "", y = "Active Cases") +
         ggthemes::theme_economist() -> p4
+p4
 #Guardar en /plots
 ggplot2::ggsave(paste0("plots/rateMa3", fecha, ".png"), p4)
