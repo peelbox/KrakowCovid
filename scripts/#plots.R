@@ -34,8 +34,8 @@ ggplot2::ggplot(ggplot2::aes(Date, Active, label = Active)) +
         
         # Etiquetas
         ggplot2::labs(title = "Active cases in M. Kraków",
-             subtitle = paste("Update:", fecha, "| Data source: https://wsse.krakow.pl"),
-             caption = "Author: @JKniffki | KStats®",
+             subtitle = paste("Update:", fecha, "| Twitter: @KrakowCovid"),
+             caption = "*https://www.gov.pl/web/wsse-krakow/ | Author: @JKniffki | KStats®",
              x = "", y = "Active Cases") +
         ggthemes::theme_economist() -> p1
 p1
