@@ -1,6 +1,6 @@
                     #updater
 #La página que en teoría se actualiza todos los días es:
-#https://wsse.krakow.pl/page/informacja-mpwis-o-sytuacji-epidemiologicznej-w-malopolsce-wg-stanu-na-23-10-2020-r-godzina-800/
+#https://www.gov.pl/web/wsse-krakow/informacja-mpwis-o-sytuacji-epidemiologicznej-w-malopolsce-w-zakresie-zakazen-koronawirusem-SARS-CoV-2-2  En formato pdf que se guarda en la carpeta pdf/
 
 if (!("dplyr" %in% installed.packages())) {
   install.packages("dplyr")
