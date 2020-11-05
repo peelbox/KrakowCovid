@@ -25,9 +25,9 @@ datos %>% dplyr::filter(County == "M.kraków") %>% #filtro
         
         #============= Gráfico ========= 
 ggplot2::ggplot(ggplot2::aes(Date, Active, label = Active)) +
-        ggplot2::geom_line() +
+        ggplot2::geom_line(col = "navy") +
         ggplot2::geom_point() +
-        ggrepel::geom_label_repel() + 
+        ggrepel::geom_label_repel(size = 3) + 
         
         #escalas
         ggplot2::scale_x_date(date_breaks = "2 day", date_labels = "%b %d") + 
@@ -51,7 +51,7 @@ datos$Date <- as.Date(datos$Date)
 #=========== 7 Días ============= 
 datos %>% ggplot2::ggplot(ggplot2::aes(Date, Siete, label = round(Siete, 2))) +
         ggplot2::geom_point() +
-        ggplot2::geom_line() +
+        ggplot2::geom_line(col = "navy") +
         ggrepel::geom_label_repel() +
         ggplot2::labs(title = "Number of new Covid-19 cases per 100,000 persons within the last 7 days in M. Krakow",
              subtitle = paste("Update:", fecha, "| Data source: https://wsse.krakow.pl"),
@@ -66,7 +66,7 @@ ggplot2::ggsave("plots/daysSeven.png", p2)
 #=========== tasa 100 mil ============= 
 datos %>% ggplot2::ggplot(ggplot2::aes(Date, Cienmil, label = round(Cienmil, 2))) +
         ggplot2::geom_point() +
-        ggplot2::geom_line() +
+        ggplot2::geom_line(col = "navy") +
         ggrepel::geom_label_repel() +
         ggplot2::labs(title = "Rate of new Covid-19 cases per 100,000 persons in M. Krakow",
              subtitle = paste("Update:", fecha, "| Data source: https://wsse.krakow.pl"),
@@ -81,7 +81,7 @@ ggplot2::ggsave("plots/rate.png", p3)
 datos %>% dplyr::mutate(MA3new = zoo::rollmean(Cienmil, k = 3, fill = NA, align = "right")) %>% 
         ggplot2::ggplot(ggplot2::aes(Date, MA3new, label = round(MA3new, 2))) +
         ggplot2::geom_point() +
-        ggplot2::geom_line() +
+        ggplot2::geom_line(col = "navy") +
         ggrepel::geom_label_repel() +
         ggplot2::labs(title = "Rate of new Covid-19 cases per 100,000 persons Moving Average 3 days in M. Krakow",
                       subtitle = paste("Update:", fecha, "| Data source: https://wsse.krakow.pl"),
@@ -91,3 +91,4 @@ datos %>% dplyr::mutate(MA3new = zoo::rollmean(Cienmil, k = 3, fill = NA, align 
 p4
 #Guardar en /plots
 ggplot2::ggsave(paste0("plots/rateMa3.png"), p4)
+
