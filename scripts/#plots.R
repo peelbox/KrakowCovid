@@ -92,3 +92,29 @@ p4
 #Guardar en /plots
 ggplot2::ggsave(paste0("plots/rateMa3.png"), p4)
 
+#======== Activos con media móvil 7 días ========= 
+ggplot2::ggplot() +
+        #Casos activos
+        ggplot2::geom_point(data = datos, ggplot2::aes(Date, Active)) +
+        ggplot2::geom_line(data = datos, ggplot2::aes(Date, Active)) +
+        
+        #Media móvil de casos activos 
+        ggplot2::geom_line(data = datos, ggplot2::aes(Date, MA7active, colour = "red")) +
+        ggplot2::geom_point(data = datos, ggplot2::aes(Date, MA7active, colour = "red")) +
+        
+        #Guide
+        ggplot2::scale_colour_identity(guide = "legend",
+                              labels = "Moving Average 7 days") +
+        
+        #Etiquetas
+        ggplot2::labs(title = "Active Cases in M. Krakow",
+             subtitle = paste("Update:", fecha, "| Twitter: @KrakowCovid"),
+             caption = "*https://www.gov.pl/web/wsse-krakow/ | Author: @JKniffki | KStats®",
+             x = "", y = "Active Cases") +
+        
+        #tema
+        ggthemes::theme_economist() +
+        ggplot2::theme(legend.title = ggplot2::element_blank()) -> p5
+p5
+        
+ggplot2::ggsave(paste0("plots/activeMA7.png"), p5)
