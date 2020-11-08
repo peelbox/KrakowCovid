@@ -36,7 +36,7 @@ names(df) <- c("id", "County", "Overall", "Incidence_vs_Active", "Deaths", "Reco
 #===========================================
 
 #Le ponemos la fecha de hoy
-df <- df %>% dplyr::mutate(Date = Sys.Date() %>% dplyr::select(Date, dplyr::everything())
+df <- df %>% dplyr::mutate(Date = Sys.Date()) %>% dplyr::select(Date, dplyr::everything())
 
 #=========== limpiador ========== 
 #Dejamos el df de la misma manera que datos para poder unirlos
@@ -46,7 +46,7 @@ df <- sapply(df, function(x) {
 
 df[,c(4, 6:length(df))] <- sapply(df[,c(4, 6:length(df))], function(x) {
   as.numeric(x)
-}) 
+})
 df$Date <- lubridate::as_date(df$Date)
 df$id <- as.integer(df$id)
 #Ponemos en mayúsculas la primera letra del distrito

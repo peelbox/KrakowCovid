@@ -18,7 +18,7 @@ if (!("ggthemes" %in% installed.packages())) {
 datos <- read.csv("data/krakow.csv", header = T) 
 datos$Date <- lubridate::as_date(datos$Date)
 `%>%` <- dplyr::`%>%` #definición del pipe 
-fecha <- Sys.Date() - 1 
+fecha <- Sys.Date()
 
 #============= Active cases today ================
 datos %>% dplyr::filter(County == "M.kraków") %>% #filtro
