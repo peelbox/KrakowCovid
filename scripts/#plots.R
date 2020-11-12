@@ -33,7 +33,7 @@ ggplot2::ggplot(ggplot2::aes(Date, Active, label = Active)) +
         ggplot2::scale_x_date(date_breaks = "2 day", date_labels = "%b %d") + 
         
         # Etiquetas
-        ggplot2::labs(title = "Active cases in M. Kraków",
+        ggplot2::labs(title = "Covid-19 Active cases in M. Kraków",
              subtitle = paste("Update:", fecha, "| Twitter: @KrakowCovid"),
              caption = "*https://www.gov.pl/web/wsse-krakow/ | Author: @JKniffki | KStats®",
              x = "", y = "Active Cases") +
@@ -107,7 +107,7 @@ ggplot2::ggplot() +
                               labels = "Moving Average 7 days") +
         
         #Etiquetas
-        ggplot2::labs(title = "Active Cases in M. Krakow",
+        ggplot2::labs(title = "Covid-19 Active Cases in M. Krakow",
              subtitle = paste("Update:", fecha, "| Twitter: @KrakowCovid"),
              caption = "*https://www.gov.pl/web/wsse-krakow/ | Author: @JKniffki | KStats®",
              x = "", y = "Active Cases") +
