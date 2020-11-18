@@ -92,7 +92,7 @@ p4
 #Guardar en /plots
 ggplot2::ggsave(paste0("plots/rateMa3.png"), p4)
 
-#======== Activos con media móvil 7 días ========= 
+#======== Activos con media móvil 7 y 14 días ========= 
 ggplot2::ggplot() +
         #Casos activos
         ggplot2::geom_point(data = datos, ggplot2::aes(Date, Active)) +
@@ -103,12 +103,12 @@ ggplot2::ggplot() +
         ggplot2::geom_point(data = datos, ggplot2::aes(Date, MA7active, colour = "red")) +
         
         #Media móvil 14 días de casos activos 
-        ggplot2::geom_line(data = datos, ggplot2::aes(Date, MA7active, colour = "blue")) +
-        ggplot2::geom_point(data = datos, ggplot2::aes(Date, MA7active, colour = "blue")) +
+        ggplot2::geom_line(data = datos, ggplot2::aes(Date, MA14active, colour = "blue")) +
+        ggplot2::geom_point(data = datos, ggplot2::aes(Date, MA14active, colour = "blue")) +
         
         #Guide
         ggplot2::scale_colour_identity(guide = "legend",
-                              labels = c("Moving Average 7 days", "Moving Average 14 days")) +
+                              labels = c("Moving Average 14 days", "Moving Average 7 days")) +
         
         #Etiquetas
         ggplot2::labs(title = "Covid-19 Active Cases in M. Krakow",
