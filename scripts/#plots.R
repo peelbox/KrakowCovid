@@ -98,13 +98,17 @@ ggplot2::ggplot() +
         ggplot2::geom_point(data = datos, ggplot2::aes(Date, Active)) +
         ggplot2::geom_line(data = datos, ggplot2::aes(Date, Active)) +
         
-        #Media móvil de casos activos 
+        #Media móvil 7 días de casos activos 
         ggplot2::geom_line(data = datos, ggplot2::aes(Date, MA7active, colour = "red")) +
         ggplot2::geom_point(data = datos, ggplot2::aes(Date, MA7active, colour = "red")) +
         
+        #Media móvil 14 días de casos activos 
+        ggplot2::geom_line(data = datos, ggplot2::aes(Date, MA7active, colour = "blue")) +
+        ggplot2::geom_point(data = datos, ggplot2::aes(Date, MA7active, colour = "blue")) +
+        
         #Guide
         ggplot2::scale_colour_identity(guide = "legend",
-                              labels = "Moving Average 7 days") +
+                              labels = c("Moving Average 7 days", "Moving Average 14 days")) +
         
         #Etiquetas
         ggplot2::labs(title = "Covid-19 Active Cases in M. Krakow",

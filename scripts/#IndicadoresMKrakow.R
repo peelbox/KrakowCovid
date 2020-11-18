@@ -25,6 +25,9 @@ kdf %>% dplyr::mutate(
                #Media móvil activos 7 días
                MA7active = round(zoo::rollmean(Active, k = 7, fill = NA, align = "right"), 2), 
                
+               #Media móvil activos 14 días
+               MA14active = round(zoo::rollmean(Active, k = 14, fill = NA, align = "right"), 2), 
+               
                #Media móvil activos 3 días
                MA3active = round(zoo::rollmean(Active, k = 3, fill = NA, align = "right"), 2), 
                
