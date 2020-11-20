@@ -37,7 +37,8 @@ ggplot2::ggplot(ggplot2::aes(Date, Active, label = Active)) +
              subtitle = paste("Update:", fecha, "| Twitter: @KrakowCovid"),
              caption = "*https://www.gov.pl/web/wsse-krakow/ | Author: @JKniffki | KStats®",
              x = "", y = "Active Cases") +
-        ggthemes::theme_economist() -> p1
+        ggthemes::theme_economist() +
+        theme(axis.text.x = element_text(angle = 90)) -> p1
 p1
 #Guardar en /plots
 ggplot2::ggsave("plots/active.png", p1)
@@ -57,7 +58,10 @@ datos %>% ggplot2::ggplot(ggplot2::aes(Date, Siete, label = round(Siete, 2))) +
              subtitle = paste("Update:", fecha, "| Data source: https://wsse.krakow.pl"),
              caption = "Author: @JKniffki | KStats®",
              x = "", y = "Active Cases") +
-        ggthemes::theme_economist() -> p2
+        #escalas
+        ggplot2::scale_x_date(date_breaks = "2 day", date_labels = "%b %d") +
+        ggthemes::theme_economist() +
+        ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90)) -> p2
 p2
 #Guardar en /plots
 ggplot2::ggsave("plots/daysSeven.png", p2)
@@ -72,7 +76,9 @@ datos %>% ggplot2::ggplot(ggplot2::aes(Date, Cienmil, label = round(Cienmil, 2))
              subtitle = paste("Update:", fecha, "| Data source: https://wsse.krakow.pl"),
              caption = "Author: @JKniffki | KStats®",
              x = "", y = "Active Cases") +
-        ggthemes::theme_economist() -> p3
+        ggplot2::scale_x_date(date_breaks = "2 day", date_labels = "%b %d") +
+        ggthemes::theme_economist() +
+        ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90)) -> p3
 p3
 #Guardar en /plots
 ggplot2::ggsave("plots/rate.png", p3)
@@ -87,7 +93,9 @@ datos %>% dplyr::mutate(MA3new = zoo::rollmean(Cienmil, k = 3, fill = NA, align 
                       subtitle = paste("Update:", fecha, "| Data source: https://wsse.krakow.pl"),
                       caption = "Author: @JKniffki | KStats®",
                       x = "", y = "Active Cases") +
-        ggthemes::theme_economist() -> p4
+        ggplot2::scale_x_date(date_breaks = "2 day", date_labels = "%b %d") +
+        ggthemes::theme_economist() +
+        ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90)) -> p4
 p4
 #Guardar en /plots
 ggplot2::ggsave(paste0("plots/rateMa3.png"), p4)
@@ -117,8 +125,10 @@ ggplot2::ggplot() +
              x = "", y = "Active Cases") +
         
         #tema
+        ggplot2::scale_x_date(date_breaks = "2 day", date_labels = "%b %d") +
         ggthemes::theme_economist() +
-        ggplot2::theme(legend.title = ggplot2::element_blank()) -> p5
+        ggplot2::theme(legend.title = ggplot2::element_blank(),
+                       axis.text.x = ggplot2::element_text(angle = 90)) -> p5
 p5
         
 ggplot2::ggsave(paste0("plots/activeMA7.png"), p5)
