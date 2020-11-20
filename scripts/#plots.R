@@ -122,7 +122,7 @@ ggplot2::ggplot() +
         ggplot2::labs(title = "Covid-19 Active Cases in M. Krakow",
              subtitle = paste("Update:", fecha, "| Twitter: @KrakowCovid"),
              caption = "*https://www.gov.pl/web/wsse-krakow/ | Author: @JKniffki | KStats®",
-             x = "", y = "Active Cases") +
+             x = "", y = "") +
         
         #tema
         ggplot2::scale_x_date(date_breaks = "2 day", date_labels = "%b %d") +
