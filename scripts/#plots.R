@@ -57,7 +57,7 @@ datos %>% ggplot2::ggplot(ggplot2::aes(Date, Siete, label = round(Siete, 2))) +
         ggplot2::labs(title = "Number of new Covid-19 cases per 100,000 persons within the last 7 days in M. Krakow",
              subtitle = paste("Update:", fecha, "| Data source: https://wsse.krakow.pl"),
              caption = "Author: @JKniffki | KStats®",
-             x = "", y = "Active Cases") +
+             x = "", y = "") +
         #escalas
         ggplot2::scale_x_date(date_breaks = "2 day", date_labels = "%b %d") +
         ggthemes::theme_economist() +
@@ -75,7 +75,7 @@ datos %>% ggplot2::ggplot(ggplot2::aes(Date, Cienmil, label = round(Cienmil, 2))
         ggplot2::labs(title = "Rate of new Covid-19 cases per 100,000 persons in M. Krakow",
              subtitle = paste("Update:", fecha, "| Data source: https://wsse.krakow.pl"),
              caption = "Author: @JKniffki | KStats®",
-             x = "", y = "Active Cases") +
+             x = "", y = "") +
         ggplot2::scale_x_date(date_breaks = "2 day", date_labels = "%b %d") +
         ggthemes::theme_economist() +
         ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90)) -> p3
@@ -92,7 +92,7 @@ datos %>% dplyr::mutate(MA3new = zoo::rollmean(Cienmil, k = 3, fill = NA, align 
         ggplot2::labs(title = "Rate of new Covid-19 cases per 100,000 persons Moving Average 3 days in M. Krakow",
                       subtitle = paste("Update:", fecha, "| Data source: https://wsse.krakow.pl"),
                       caption = "Author: @JKniffki | KStats®",
-                      x = "", y = "Active Cases") +
+                      x = "", y = "") +
         ggplot2::scale_x_date(date_breaks = "2 day", date_labels = "%b %d") +
         ggthemes::theme_economist() +
         ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90)) -> p4
