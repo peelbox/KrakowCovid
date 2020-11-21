@@ -38,7 +38,7 @@ ggplot2::ggplot(ggplot2::aes(Date, Active, label = Active)) +
              caption = "*https://www.gov.pl/web/wsse-krakow/ | Author: @JKniffki | KStats®",
              x = "", y = "Active Cases") +
         ggthemes::theme_economist() +
-        theme(axis.text.x = element_text(angle = 90)) -> p1
+        ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90)) -> p1
 p1
 #Guardar en /plots
 ggplot2::ggsave("plots/active.png", p1)
